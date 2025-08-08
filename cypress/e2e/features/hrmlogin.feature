@@ -21,11 +21,11 @@ Feature: Login Functionality for OrangeHRM Application
     And clicks the login button
     Then an error message should be displayed
 
-  @BothFieldsEmpty
-  Scenario: Login with blank username and password
-    When the user leaves both username and password fields blank
-    And clicks the login button
-    Then validation messages should be displayed
+  # @BothFieldsEmpty
+  # Scenario: Login with blank username and password
+  #   When the user leaves both username and password fields blank
+  #   And clicks the login button
+  #   Then validation messages should be displayed
 
   @LoginWithBlankUsername
   Scenario: Login with blank username

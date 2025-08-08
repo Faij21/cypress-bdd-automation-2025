@@ -1,3 +1,5 @@
+import WaitUtils from '../../support/utilities/waitUtils';
+import HighlightUtils from '../../support/utilities/highlightUtils';
 
 const LoginPageLocators = {
     signInCTA: ".panel > .header > .authorization-link > a",
@@ -20,10 +22,18 @@ export class LoginPage {
     }
 
     verifyLogoutCTA() {
-        cy.wait(10000);
+        // cy.wait(10000);
+        WaitUtils.waitForElementToBeVisible(LoginPageLocators.dropdownMenu);
+        HighlightUtils.highlight(LoginPageLocators.dropdownMenu);
+        cy.wait(2000);
+        HighlightUtils.removeHighlight(LoginPageLocators.dropdownMenu);
+        cy.wait(3000);
         // cy.get(LoginPageLocators.loggedUserName).should('have.text', 'Welcome, Test F Test L!');
         cy.get(LoginPageLocators.dropdownMenu).click();
         cy.xpath(LoginPageLocators.signOutCTA).should('be.visible');
+        HighlightUtils.highlightXpath(LoginPageLocators.signOutCTA);
+        cy.wait(2000);
+        HighlightUtils.removeHighlightXpath(LoginPageLocators.signOutCTA);
     }
 
 }
